@@ -1,16 +1,26 @@
 = forkexec
 
-Description goes here.
+* Executes given block in new forked process.
+* It's usefull for timout of actions outside ruby eg. external system calls.
+* After timeout the forked process is killed and Timeout::Error is raised.
+* Return value of forked prcess is given through tmpfs in /dev/shm as serialized YAML object.
+* It's prototype = no tests, no doc, no warranty !
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+example:
+> require 'forkexec'
+=> true 
+
+> ForkExec.timeout(1){ exec "sleep 10"}
+Timeout::Error: PID 11185 timeouted
+        from ./forkexec.rb:28:in `timeout'
+        from (irb):2
+        from /usr/lib/ruby/1.8/x86_64-linux/rbconfig.rb:168
+
+> ForkExec.timeout(1){ "foo bar" if true} 
+=> "foo bar"
+
+
+
 
 == Copyright
 
