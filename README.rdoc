@@ -6,18 +6,19 @@
 * Return value of forked prcess is given through tmpfs in /dev/shm as serialized YAML object.
 * It's prototype = no tests, no doc, no warranty !
 
+typewriter
 example:
-> require 'forkexec'
-=> true 
+  > require 'forkexec'
+  => true 
 
-> ForkExec.timeout(1){ exec "sleep 10"}
-Timeout::Error: PID 11185 timeouted
-        from ./forkexec.rb:28:in `timeout'
-        from (irb):2
-        from /usr/lib/ruby/1.8/x86_64-linux/rbconfig.rb:168
+  > ForkExec.timeout(1){ exec "sleep 10"}
+  Timeout::Error: PID 11185 timeouted
+          from ./forkexec.rb:28:in `timeout'
+          from (irb):2
+          from /usr/lib/ruby/1.8/x86_64-linux/rbconfig.rb:168
 
-> ForkExec.timeout(1){ "foo bar" if true} 
-=> "foo bar"
+  > ForkExec.timeout(1){ "foo bar" if true} 
+  => "foo bar"
 
 
 
