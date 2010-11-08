@@ -1,13 +1,12 @@
 = forkexec
 
+* It's usefull for timeout actions running outside ruby eg. external system calls.
 * Executes given block in new forked process.
-* It's usefull for timout of actions outside ruby eg. external system calls.
 * After timeout the forked process is killed and Timeout::Error is raised.
 * Return value of forked prcess is given through tmpfs in /dev/shm as serialized YAML object.
 * It's prototype = no tests, no doc, no warranty !
 
-typewriter
-example:
+==example
   > require 'forkexec'
   => true 
 
