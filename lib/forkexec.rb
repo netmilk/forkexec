@@ -28,9 +28,10 @@ module ForkExec
       Process.waitpid pid
       raise Timeout::Error, "PID #{pid} timeouted"
     end
-
-    File.join("/dev/shm/forkexec/",pid.to_s)
-
+    
+    shm_file = File.join("/dev/shm/forkexec/",pid.to_s)
+    File.delete(shm_file) if File.exist?(shm_file)
+    
     return result
   end
 end

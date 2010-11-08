@@ -20,8 +20,6 @@
   => "foo bar"
 
 
-
-
 == Copyright
 
 Copyright (c) 2010 Adam Kliment. See LICENSE for details.
